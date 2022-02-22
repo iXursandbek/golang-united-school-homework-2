@@ -23,17 +23,19 @@ const (
 
 func CalcSquare(sideLen float64, sidesNum Sides) float64 {
 	var s float64
-	if sidesNum == SidesCircle {
+	if sidesNum == SidesTriangle {
 		s = sideLen * sideLen * math.Sqrt(3) / 4
-	} else if sidesNum == SidesTriangle {
+	} else if sidesNum == SidesSquare {
 		s = sideLen * sideLen
-	} else if sidesNum == SidesTriangle {
+	} else if sidesNum == SidesCircle {
 		s = math.Pi * sideLen * sideLen
+	} else {
+		s = 0
 	}
 	return s
 
 }
 
 func main() {
-	fmt.Println(CalcSquare(3.0, SidesCircle))
+	fmt.Println(CalcSquare(10.0, SidesTriangle))
 }
