@@ -13,18 +13,21 @@ import (
 // CalcSquare(10.0, SidesSquare)
 // CalcSquare(10.0, SidesCircle)
 
+type Sides int
 
-type SidesTriangle int
-type SidesSquare int
-type SidesCircle int
+const (
+	SidesCircle   Sides = 0
+	SidesTriangle Sides = 3
+	SidesSquare   Sides = 4
+)
 
-func CalcSquare(sideLen float64, sidesNum SidesTriangle) float64 {
+func CalcSquare(sideLen float64, sidesNum Sides) float64 {
 	var s float64
-	if sidesNum == 3 {
+	if sidesNum == SidesCircle {
 		s = sideLen * sideLen * math.Sqrt(3) / 4
-	} else if sidesNum == 4 {
+	} else if sidesNum == SidesTriangle {
 		s = sideLen * sideLen
-	} else if sidesNum == 0 {
+	} else if sidesNum == SidesTriangle {
 		s = math.Pi * sideLen * sideLen
 	}
 	return s
@@ -32,5 +35,5 @@ func CalcSquare(sideLen float64, sidesNum SidesTriangle) float64 {
 }
 
 func main() {
-	fmt.Println(CalcSquare(3.0, 3))
+	fmt.Println(CalcSquare(3.0, SidesCircle))
 }
